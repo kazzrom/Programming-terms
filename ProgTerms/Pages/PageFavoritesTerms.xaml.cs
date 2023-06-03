@@ -85,8 +85,8 @@ namespace ProgTerms.Pages
 
         private void BtnEditTerm_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Frame.Navigate(new PageEditTerm(true));
-            Properties.BtnBack.Visibility = Visibility.Collapsed;
+            MainObjects.Frame.Navigate(new PageEditTerm(true));
+            MainObjects.BtnBack.Visibility = Visibility.Collapsed;
         }
 
         private void BtnDeleteTerm_Click(object sender, RoutedEventArgs e)

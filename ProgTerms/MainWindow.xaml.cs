@@ -26,22 +26,26 @@ namespace ProgTerms
         public MainWindow()
         {
             InitializeComponent();
-            Properties.Frame = FrameMain;
-            Properties.Frame.Navigate(new PageMain());
-            Properties.BtnBack = BtnBack;
+            MainObjects.Frame = FrameMain;
+            MainObjects.Frame.Navigate(new PageMain());
+            MainObjects.BtnBack = BtnBack;
+            MainObjects.HeaderTextBlock = HeaderTextBlock;
+            MainObjects.HeaderImage = HeaderImage;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (Properties.IsMain)
+            if (MainObjects.IsMain)
             {
-                Properties.Frame.Navigate(new PageMain());
+                MainObjects.Frame.Navigate(new PageMain());
                 BtnBack.Visibility = Visibility.Collapsed;
+                MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Source Code.ico", "Главная");
             }
             else
             {
-                Properties.Frame.Navigate(new PageTerm());
-                Properties.IsMain = true;
+                MainObjects.Frame.Navigate(new PageAllTerms());
+                MainObjects.IsMain = true;
+                MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Open Book.ico", "Все термины");
             }
         }
     }

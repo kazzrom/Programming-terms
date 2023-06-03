@@ -15,7 +15,19 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Image Width="30" Source="Icons/Source code.ico" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image 
+                x:Name="HeaderImage"
+                Width="30" 
+                Source="Icons/Source code.ico" 
+                Margin="0 0 10 0"/>
+            <TextBlock 
+                x:Name="HeaderTextBlock"
+                Text="Главная" 
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontWeight="Bold"/>
+        </StackPanel>
 
         <Button
             x:Name="BtnBack"

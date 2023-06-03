@@ -21,9 +21,9 @@ namespace ProgTerms.Pages
     /// <summary>
     /// Логика взаимодействия для PageTerm.xaml
     /// </summary>
-    public partial class PageTerm : Page
+    public partial class PageAllTerms : Page
     {
-        public PageTerm()
+        public PageAllTerms()
         {
             InitializeComponent();
             ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.ToList();
@@ -71,15 +71,15 @@ namespace ProgTerms.Pages
 
         private void BtnAddTerm_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Frame.Navigate(new PageAddTerm());
-            Properties.IsMain = false;
+            MainObjects.Frame.Navigate(new PageAddTerm());
+            MainObjects.IsMain = false;
 
         }
 
         private void BtnEditTerm_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Frame.Navigate(new PageEditTerm(false));
-            Properties.BtnBack.Visibility = Visibility.Collapsed;
+            MainObjects.Frame.Navigate(new PageEditTerm(false));
+            MainObjects.BtnBack.Visibility = Visibility.Collapsed;
         }
 
         private void BtnDeleteTerm_Click(object sender, RoutedEventArgs e)

@@ -28,16 +28,18 @@ namespace ProgTerms.Pages
 
         private void BtnTerms_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Frame.Navigate(new PageTerm());
-            Properties.IsMain = true;
-            Properties.BtnBack.Visibility = Visibility.Visible;
+            MainObjects.Frame.Navigate(new PageAllTerms());
+            MainObjects.IsMain = true;
+            MainObjects.BtnBack.Visibility = Visibility.Visible;
+            MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Open Book.ico", "Все термины");
         }
 
         private void BtnFavoritesTerms_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Frame.Navigate(new PageFavoritesTerms());
-            Properties.IsMain = true;
-            Properties.BtnBack.Visibility = Visibility.Visible;
+            MainObjects.Frame.Navigate(new PageFavoritesTerms());
+            MainObjects.IsMain = true;
+            MainObjects.BtnBack.Visibility = Visibility.Visible;
+            MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Bookmark.ico", "Избранное");
         }
     }
 }

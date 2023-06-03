@@ -48,11 +48,32 @@ namespace ProgTerms.Pages
                     CurrentTerm.Term.AddInformation = WTBAddInfo.Text;
 
                     ConnectDB.ProgTermsContext.SaveChanges();
-                    Properties.Frame.Navigate(IsFavorite ? new PageFavoritesTerms() : new PageTerm());
+
+                    if(IsFavorite)
+                    {
+                        MainObjects.Frame.Navigate(new PageFavoritesTerms());
+                        MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Bookmark.ico", "Избранное");
+                    }
+                    else
+                    {
+                        MainObjects.Frame.Navigate(new PageAllTerms());
+                        MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Open Book.ico", "Все термины");
+                    }
                 }
                 else if (MBisSave == MessageBoxResult.No)
-                    Properties.Frame.Navigate(IsFavorite ? new PageFavoritesTerms() : new PageTerm());
-                Properties.BtnBack.Visibility = Visibility.Visible;
+                {
+                    if (IsFavorite)
+                    {
+                        MainObjects.Frame.Navigate(new PageFavoritesTerms());
+                        MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Bookmark.ico", "Избранное");
+                    }
+                    else
+                    {
+                        MainObjects.Frame.Navigate(new PageAllTerms());
+                        MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Open Book.ico", "Все термины");
+                    }
+                }
+                MainObjects.BtnBack.Visibility = Visibility.Visible;
 
             }
             catch (Exception ex)
