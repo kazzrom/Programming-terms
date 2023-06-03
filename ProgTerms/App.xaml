@@ -1,0 +1,33 @@
+﻿<Application x:Class="ProgTerms.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ProgTerms"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Inter"/>
+        </Style>
+        <Style x:Key="BtnNone" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="BtnBookmark" TargetType="ToggleButton">
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Source="Icons/Bookmark_true.ico"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Source="Icons/Bookmark_false.ico"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Application.Resources>
+</Application>
