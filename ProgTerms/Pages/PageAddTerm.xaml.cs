@@ -40,8 +40,8 @@ namespace ProgTerms.Pages
             {
                 if (string.IsNullOrEmpty(WTBTitle.Text) || string.IsNullOrEmpty(WTBDefinition.Text))
                 {
-                    WTBTitle.BorderBrush = Brushes.Red;
-                    WTBDefinition.BorderBrush = Brushes.Red;
+                    WTBTitle.BorderBrush = string.IsNullOrEmpty(WTBTitle.Text) ? Brushes.Red : Brushes.Gray;
+                    WTBDefinition.BorderBrush = string.IsNullOrEmpty(WTBDefinition.Text) ? Brushes.Red : Brushes.Gray;
                     throw new Exception("Введите обязательные поля!");
                 }
 

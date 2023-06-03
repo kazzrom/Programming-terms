@@ -27,6 +27,7 @@ namespace ProgTerms.Pages
         {
             InitializeComponent();
             IsFavorite = isFavorite;
+
             WTBTitle.Text = CurrentTerm.Term.Title;
             WTBDefinition.Text = CurrentTerm.Term.Definition; 
             WTBAddInfo.Text = CurrentTerm.Term.AddInformation;
@@ -37,7 +38,11 @@ namespace ProgTerms.Pages
             try
             {
                 if (string.IsNullOrEmpty(WTBTitle.Text) || string.IsNullOrEmpty(WTBDefinition.Text))
+                {
+                    WTBTitle.BorderBrush = string.IsNullOrEmpty(WTBTitle.Text) ? Brushes.Red : Brushes.Gray;
+                    WTBDefinition.BorderBrush = string.IsNullOrEmpty(WTBDefinition.Text) ? Brushes.Red : Brushes.Gray;
                     throw new Exception("Введите обязательные поля!");
+                }
 
                 var MBisSave = MessageBox.Show("Сохранить изменения?", "Изменение термина", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 

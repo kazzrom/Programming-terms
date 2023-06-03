@@ -100,7 +100,8 @@
                 <StackPanel x:Name="StkAddInfo" Orientation="Vertical" Margin="30 40 30 0">
                     <TextBlock
                         Text="Дополнительная информация"
-                        FontSize="18"/>
+                        FontSize="18"
+                        FontStyle="Italic"/>
                     <TextBlock
                         x:Name="TblAddInfo"
                         Text="Дополнительная информация"
