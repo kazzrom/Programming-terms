@@ -20,7 +20,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <xctk:WatermarkTextBox 
+        <xctk:WatermarkTextBox
+            x:Name="WTBSearch"
             Grid.Row="0"
             Grid.Column="0"
             Watermark="Поиск"
@@ -66,7 +67,7 @@
             </StackPanel>
         </Border>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="0">
+        <ScrollViewer Grid.Row="1" Grid.Column="0" HorizontalScrollBarVisibility="Hidden">
                 <StackPanel Orientation="Vertical">
                     <ListBox x:Name="ListAllTerm" SelectionChanged="ListAllTerm_SelectionChanged">
                         <ListBox.ItemTemplate>
@@ -81,12 +82,12 @@
                 </StackPanel>
             </ScrollViewer>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
+        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
                 <TextBlock
                 x:Name="TblTitle"
                 Text="Title -"
-                Margin="30 70 30 0"
+                Margin="30 30 30 0"
                 FontSize="36"
                 FontWeight="Bold"/>
 
@@ -105,7 +106,7 @@
                     x:Name="TblAddInfo"
                     Text="Дополнительная информация"
                     TextWrapping="Wrap"
-                    Margin="0 10 40 0"
+                    Margin="0 10 40 30"
                     FontSize="18"/>
                 </StackPanel>
             </StackPanel>

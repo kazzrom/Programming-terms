@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ProgTerms.Pages
 {
@@ -28,6 +29,19 @@ namespace ProgTerms.Pages
             ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.ToList();
             ListAllTerm.SelectedIndex = 0;
             SelectTerm();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += UpdateData;
+            timer.Interval = TimeSpan.FromSeconds(0.5);
+            timer.Start();
+        }
+
+        private void UpdateData(object? sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(WTBSearch.Text))
+                ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.ToList();
+            else
+                ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.Where(term => term.Title.StartsWith(WTBSearch.Text)).ToList();
         }
 
         private void SelectTerm()
@@ -57,22 +71,33 @@ namespace ProgTerms.Pages
 
         private void BtnAddTerm_Click(object sender, RoutedEventArgs e)
         {
+            FrameObj.Frame.Navigate(new PageAddTerm());
 
         }
 
         private void BtnEditTerm_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void BtnDeleteTerm_Click(object sender, RoutedEventArgs e)
         {
+            var MBisDelete = MessageBox.Show("Вы действительно хотите удалить этот термин?", "Удаление термина", 
+                                                MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
+            if (MBisDelete == MessageBoxResult.Yes)
+            {
+                ConnectDB.ProgTermsContext.Terms.Remove(CurrentTerm.Term);
+                ConnectDB.ProgTermsContext.SaveChanges();
+                MessageBox.Show("Термин был успешно удалён.", "Удаление термина", MessageBoxButton.OK, MessageBoxImage.Information);
+                ListAllTerm.SelectedIndex = 0;
+                SelectTerm();
+            }
         }
 
         private void BtnBookmark_Click(object sender, RoutedEventArgs e)
         {
-
+            CurrentTerm.Term.IsSave = (bool)BtnBookmark.IsChecked!;
+            ConnectDB.ProgTermsContext.SaveChanges();
         }
     }
 }
