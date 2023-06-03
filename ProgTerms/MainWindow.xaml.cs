@@ -27,7 +27,8 @@ namespace ProgTerms
         {
             InitializeComponent();
             FrameObj.Frame = FrameMain;
-            FrameObj.Frame.Navigate(new PageTerm());
+            FrameObj.Frame.Navigate(new PageMain());
+
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
