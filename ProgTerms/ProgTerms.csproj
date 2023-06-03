@@ -19,7 +19,6 @@
     <None Remove="Icons\Edit.ico" />
     <None Remove="Icons\Open Book.ico" />
     <None Remove="Icons\Save.ico" />
-    <None Remove="Images\cubic.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,9 +64,10 @@
     <Resource Include="Icons\Save.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\cubic.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>

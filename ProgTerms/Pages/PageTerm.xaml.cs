@@ -77,6 +77,7 @@ namespace ProgTerms.Pages
 
         private void BtnEditTerm_Click(object sender, RoutedEventArgs e)
         {
+            FrameObj.Frame.Navigate(new PageEditTerm());
         }
 
         private void BtnDeleteTerm_Click(object sender, RoutedEventArgs e)
@@ -88,7 +89,6 @@ namespace ProgTerms.Pages
             {
                 ConnectDB.ProgTermsContext.Terms.Remove(CurrentTerm.Term);
                 ConnectDB.ProgTermsContext.SaveChanges();
-                MessageBox.Show("Термин был успешно удалён.", "Удаление термина", MessageBoxButton.OK, MessageBoxImage.Information);
                 ListAllTerm.SelectedIndex = 0;
                 SelectTerm();
             }

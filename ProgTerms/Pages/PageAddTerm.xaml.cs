@@ -39,7 +39,7 @@ namespace ProgTerms.Pages
             try
             {
                 if (string.IsNullOrEmpty(WTBTitle.Text) || string.IsNullOrEmpty(WTBDefinition.Text))
-                    throw new Exception("Введите обязательные поля");
+                    throw new Exception("Введите обязательные поля!");
 
                 ConnectDB.ProgTermsContext.Add(new Term()
                 {
@@ -54,7 +54,7 @@ namespace ProgTerms.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }
