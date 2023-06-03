@@ -39,10 +39,20 @@ namespace ProgTerms.Pages
             try
             {
                 if (string.IsNullOrEmpty(WTBTitle.Text) || string.IsNullOrEmpty(WTBDefinition.Text))
+                {
+                    WTBTitle.BorderBrush = Brushes.Red;
+                    WTBDefinition.BorderBrush = Brushes.Red;
                     throw new Exception("Введите обязательные поля!");
+                }
+
+                WTBTitle.BorderBrush = Brushes.Gray;
+                WTBDefinition.BorderBrush = Brushes.Gray;
+
+                int lastID = ConnectDB.ProgTermsContext.Terms.OrderBy(term => term.Id).Last().Id;
 
                 ConnectDB.ProgTermsContext.Add(new Term()
                 {
+                    Id = lastID + 1,
                     Title = WTBTitle.Text,
                     Definition = WTBDefinition.Text,
                     AddInformation = WTBAddInfo.Text,

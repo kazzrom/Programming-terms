@@ -98,7 +98,7 @@ namespace ProgTerms.Pages
             {
                 ConnectDB.ProgTermsContext.Terms.Remove(CurrentTerm.Term);
                 ConnectDB.ProgTermsContext.SaveChanges();
-                ListAllTerm.SelectedIndex = 0;
+                ListAllTerm.SelectedIndex = 1;
                 SelectTerm();
             }
         }

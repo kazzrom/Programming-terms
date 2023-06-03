@@ -8,6 +8,11 @@
             <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Inter"/>
         </Style>
         
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Inter"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+        </Style>
+        
         <Style x:Key="BtnNone" TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
