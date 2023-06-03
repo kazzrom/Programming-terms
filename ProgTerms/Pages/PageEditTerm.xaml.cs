@@ -22,10 +22,11 @@ namespace ProgTerms.Pages
     /// </summary>
     public partial class PageEditTerm : Page
     {
-        public PageEditTerm()
+        private bool IsFavorite { get; set; }
+        public PageEditTerm(bool isFavorite)
         {
             InitializeComponent();
-
+            IsFavorite = isFavorite;
             WTBTitle.Text = CurrentTerm.Term.Title;
             WTBDefinition.Text = CurrentTerm.Term.Definition; 
             WTBAddInfo.Text = CurrentTerm.Term.AddInformation;
@@ -35,7 +36,6 @@ namespace ProgTerms.Pages
         {
             try
             {
-
                 if (string.IsNullOrEmpty(WTBTitle.Text) || string.IsNullOrEmpty(WTBDefinition.Text))
                     throw new Exception("Введите обязательные поля!");
 
@@ -48,10 +48,11 @@ namespace ProgTerms.Pages
                     CurrentTerm.Term.AddInformation = WTBAddInfo.Text;
 
                     ConnectDB.ProgTermsContext.SaveChanges();
-                    FrameObj.Frame.Navigate(new PageTerm());
+                    Properties.Frame.Navigate(IsFavorite ? new PageFavoritesTerms() : new PageTerm());
                 }
                 else if (MBisSave == MessageBoxResult.No)
-                    FrameObj.Frame.Navigate(new PageTerm());
+                    Properties.Frame.Navigate(IsFavorite ? new PageFavoritesTerms() : new PageTerm());
+                Properties.BtnBack.Visibility = Visibility.Visible;
 
             }
             catch (Exception ex)

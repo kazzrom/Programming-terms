@@ -36,14 +36,7 @@
                 HorizontalAlignment="Center"
                 Padding="20 10">
 
-            <StackPanel Orientation="Horizontal" >
-                <Button Style="{StaticResource BtnNone}"
-                        Width="26"
-                        Margin="0 0 30 0"
-                        x:Name="BtnAddTerm"
-                        Click="BtnAddTerm_Click">
-                    <Image Source="../Icons/Add.ico"/>
-                </Button>
+            <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource BtnNone}"
                         Width="26"
                         Margin="0 0 30 0"

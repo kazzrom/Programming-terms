@@ -19,6 +19,7 @@
     <None Remove="Icons\Edit.ico" />
     <None Remove="Icons\Open Book.ico" />
     <None Remove="Icons\Save.ico" />
+    <None Remove="Icons\Source Code.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,6 +63,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\Save.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\Source Code.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

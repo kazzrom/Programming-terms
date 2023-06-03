@@ -71,13 +71,15 @@ namespace ProgTerms.Pages
 
         private void BtnAddTerm_Click(object sender, RoutedEventArgs e)
         {
-            FrameObj.Frame.Navigate(new PageAddTerm());
+            Properties.Frame.Navigate(new PageAddTerm());
+            Properties.IsMain = false;
 
         }
 
         private void BtnEditTerm_Click(object sender, RoutedEventArgs e)
         {
-            FrameObj.Frame.Navigate(new PageEditTerm());
+            Properties.Frame.Navigate(new PageEditTerm(false));
+            Properties.BtnBack.Visibility = Visibility.Collapsed;
         }
 
         private void BtnDeleteTerm_Click(object sender, RoutedEventArgs e)

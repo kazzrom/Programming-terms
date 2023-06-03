@@ -83,15 +83,10 @@ namespace ProgTerms.Pages
             SelectTerm();
         }
 
-        private void BtnAddTerm_Click(object sender, RoutedEventArgs e)
-        {
-            FrameObj.Frame.Navigate(new PageAddTerm());
-
-        }
-
         private void BtnEditTerm_Click(object sender, RoutedEventArgs e)
         {
-            FrameObj.Frame.Navigate(new PageEditTerm());
+            Properties.Frame.Navigate(new PageEditTerm(true));
+            Properties.BtnBack.Visibility = Visibility.Collapsed;
         }
 
         private void BtnDeleteTerm_Click(object sender, RoutedEventArgs e)

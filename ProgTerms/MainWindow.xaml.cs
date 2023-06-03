@@ -26,14 +26,23 @@ namespace ProgTerms
         public MainWindow()
         {
             InitializeComponent();
-            FrameObj.Frame = FrameMain;
-            FrameObj.Frame.Navigate(new PageMain());
-
+            Properties.Frame = FrameMain;
+            Properties.Frame.Navigate(new PageMain());
+            Properties.BtnBack = BtnBack;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            FrameObj.Frame.Navigate(new PageTerm());
+            if (Properties.IsMain)
+            {
+                Properties.Frame.Navigate(new PageMain());
+                BtnBack.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Properties.Frame.Navigate(new PageTerm());
+                Properties.IsMain = true;
+            }
         }
     }
 }

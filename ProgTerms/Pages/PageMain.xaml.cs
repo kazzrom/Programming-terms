@@ -28,12 +28,16 @@ namespace ProgTerms.Pages
 
         private void BtnTerms_Click(object sender, RoutedEventArgs e)
         {
-            FrameObj.Frame.Navigate(new PageTerm());
+            Properties.Frame.Navigate(new PageTerm());
+            Properties.IsMain = true;
+            Properties.BtnBack.Visibility = Visibility.Visible;
         }
 
         private void BtnFavoritesTerms_Click(object sender, RoutedEventArgs e)
         {
-            FrameObj.Frame.Navigate(new PageFavoritesTerms());
+            Properties.Frame.Navigate(new PageFavoritesTerms());
+            Properties.IsMain = true;
+            Properties.BtnBack.Visibility = Visibility.Visible;
         }
     }
 }
