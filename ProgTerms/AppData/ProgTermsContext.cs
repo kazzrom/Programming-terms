@@ -24,7 +24,6 @@ public partial class ProgTermsContext : DbContext
     {
         modelBuilder.Entity<Term>(entity =>
         {
-            entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Image).HasMaxLength(50);
             entity.Property(e => e.Title).HasMaxLength(50);
         });

@@ -48,11 +48,8 @@ namespace ProgTerms.Pages
                 WTBTitle.BorderBrush = Brushes.Gray;
                 WTBDefinition.BorderBrush = Brushes.Gray;
 
-                int lastID = ConnectDB.ProgTermsContext.Terms.OrderBy(term => term.Id).Last().Id;
-
                 ConnectDB.ProgTermsContext.Add(new Term()
                 {
-                    Id = lastID + 1,
                     Title = WTBTitle.Text,
                     Definition = WTBDefinition.Text,
                     AddInformation = WTBAddInfo.Text,
