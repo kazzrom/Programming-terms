@@ -17,9 +17,23 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <xctk:WatermarkTextBox x:Name="WTBTitle" Grid.Row="0" Watermark="Название термина" Margin="0 0 0 10"/>
-        <xctk:WatermarkTextBox x:Name="WTBDefinition" Grid.Row="1" Watermark="Определение термина" Margin="0 0 0 10"/>
-        <xctk:WatermarkTextBox x:Name="WTBAddInfo" Grid.Row="2" Watermark="Дополнительная информация о термине" Margin="0 0 0 10"/>
+        <xctk:WatermarkTextBox 
+            x:Name="WTBTitle" 
+            Grid.Row="0" 
+            Watermark="Название термина" 
+            Margin="0 0 0 10"/>
+        
+        <xctk:WatermarkTextBox 
+            x:Name="WTBDefinition"
+            Grid.Row="1" 
+            Watermark="Определение термина"
+            Margin="0 0 0 10"/>
+        
+        <xctk:WatermarkTextBox 
+            x:Name="WTBAddInfo" 
+            Grid.Row="2" 
+            Watermark="Дополнительная информация о термине"
+            Margin="0 0 0 10"/>
 
         <Button
             Grid.Row="3" 
@@ -28,9 +42,16 @@
             HorizontalAlignment="Center"
             Style="{StaticResource BtnNone}"
             Click="BtnSaveTerm_Click">
-            <StackPanel Orientation="Horizontal">
-                <Image Width="40" Source="../Icons/Save.ico"/>
-                <TextBlock Text="Сохранить" FontWeight="Bold" VerticalAlignment="Center" Margin="0 0 10 0"/>
+            <StackPanel 
+                Orientation="Horizontal">
+                <Image 
+                    Width="40" 
+                    Source="../Icons/Save.ico"/>
+                <TextBlock 
+                    Text="Сохранить" 
+                    FontWeight="Bold"
+                    VerticalAlignment="Center"
+                    Margin="0 0 10 0"/>
             </StackPanel>
         </Button>
     </Grid>

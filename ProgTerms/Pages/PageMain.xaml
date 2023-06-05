@@ -9,34 +9,61 @@
       Background="White"
       Title="PageMain">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Border CornerRadius="8" BorderThickness="2" BorderBrush="Black" Margin="0 0 100 0" Style="{StaticResource BrHover}">
+    <StackPanel 
+        Orientation="Horizontal" 
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center">
+        <Border 
+            CornerRadius="8" 
+            BorderThickness="2" 
+            BorderBrush="Black" 
+            Margin="0 0 100 0" 
+            Style="{StaticResource BrHover}">
             <Button 
                 x:Name="BtnTerms"
                 Click="BtnTerms_Click"
                 Style="{StaticResource BtnNone}"
                 Width="250"
                 Height="250">
-                <StackPanel Orientation="Vertical">
-                    <Image Width="100" Height="100" Source="../Icons/Open Book.ico" Margin="0 0 0 35"/>
-                    <TextBlock Text="ТЕРМИНЫ" FontSize="24" FontWeight="Bold"/>
+                <StackPanel 
+                    Orientation="Vertical">
+                    <Image
+                        Width="100" 
+                        Height="100" 
+                        Source="../Icons/Open Book.ico" 
+                        Margin="0 0 0 35"/>
+                    <TextBlock 
+                        Text="ТЕРМИНЫ" 
+                        FontSize="24"
+                        FontWeight="Bold"/>
                 </StackPanel>
             </Button>
         </Border>
-
-        <Border CornerRadius="8" BorderThickness="2" BorderBrush="Black" Style="{StaticResource BrHover}">
+        
+        <Border 
+            CornerRadius="8" 
+            BorderThickness="2" 
+            BorderBrush="Black" 
+            Style="{StaticResource BrHover}">
             <Button 
                 x:Name="BtnFavoritesTerms"
                 Click="BtnFavoritesTerms_Click"
                 Style="{StaticResource BtnNone}"
                 Width="250"
                 Height="250">
-                <StackPanel Orientation="Vertical">
-                    <Image Width="100" Height="100" Source="../Icons/Bookmark.ico" Margin="0 0 0 35"/>
-                    <TextBlock Text="ИЗБРАННОЕ" FontSize="24" FontWeight="Bold"/>
+                <StackPanel 
+                    Orientation="Vertical">
+                    <Image 
+                        Width="100"
+                        Height="100"
+                        Source="../Icons/Bookmark.ico"
+                        Margin="0 0 0 35"/>
+                    <TextBlock 
+                        Text="ИЗБРАННОЕ" 
+                        FontSize="24" 
+                        FontWeight="Bold"/>
                 </StackPanel>
             </Button>
         </Border>
-
     </StackPanel>
 </Page>

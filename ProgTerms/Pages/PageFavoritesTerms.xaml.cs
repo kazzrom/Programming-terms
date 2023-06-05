@@ -27,7 +27,7 @@ namespace ProgTerms.Pages
         {
             InitializeComponent();
 
-            GridFavoritesTerm.Visibility = Visibility.Hidden;
+            GridFavoritesTerms.Visibility = Visibility.Hidden;
             TBNoneTerms.Visibility = Visibility.Visible;
             TBNoneTerms.Text = "Загрузка...";
 
@@ -48,13 +48,13 @@ namespace ProgTerms.Pages
 
             if (historyContext.Count == 0)
             {
-                GridFavoritesTerm.Visibility = Visibility.Hidden;
+                GridFavoritesTerms.Visibility = Visibility.Hidden;
                 TBNoneTerms.Visibility = Visibility.Visible;
-                TBNoneTerms.Text = "Нет избранного";
+                TBNoneTerms.Text = "Список избранного пуст";
             }
             else
             {
-                GridFavoritesTerm.Visibility = Visibility.Visible;
+                GridFavoritesTerms.Visibility = Visibility.Visible;
                 TBNoneTerms.Visibility = Visibility.Collapsed;
             }
 
@@ -86,7 +86,13 @@ namespace ProgTerms.Pages
 
         private void ListAllTerm_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SelectTerm();
+            if(ListAllTerm.SelectedIndex != -1)
+            {
+                SelectTerm();
+                ScrSelectedTerm.Visibility = Visibility.Visible;
+                TblNoSelectTerm.Visibility = Visibility.Collapsed;
+                MenuButtons.Visibility = Visibility.Visible;
+            }
         }
 
         private void BtnEditTerm_Click(object sender, RoutedEventArgs e)
@@ -97,22 +103,33 @@ namespace ProgTerms.Pages
 
         private void BtnDeleteTerm_Click(object sender, RoutedEventArgs e)
         {
-            var MBisDelete = MessageBox.Show("Вы действительно хотите удалить этот термин?", "Удаление термина",
+            var MsgBxIsDelete = MessageBox.Show("Вы действительно хотите удалить этот термин?", "Удаление термина",
                                                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-            if (MBisDelete == MessageBoxResult.Yes)
+            if (MsgBxIsDelete == MessageBoxResult.Yes)
             {
+                ScrSelectedTerm.Visibility = Visibility.Collapsed;
+                TblNoSelectTerm.Visibility = Visibility.Visible;
+                MenuButtons.Visibility = Visibility.Hidden;
+
                 ConnectDB.ProgTermsContext.Terms.Remove(CurrentTerm.Term);
                 ConnectDB.ProgTermsContext.SaveChanges();
-                ListAllTerm.SelectedIndex = 1;
-                SelectTerm();
             }
         }
 
         private void BtnBookmark_Click(object sender, RoutedEventArgs e)
         {
-            if (TblTitle.Text != "Нет терминов")
+            BtnBookmark.IsChecked = true;
+            var MsgBxIsDelete = MessageBox.Show("Вы действительно хотите удалить этот термин из Избранного?", "Удаление термина из Избранного",
+                                                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (MsgBxIsDelete == MessageBoxResult.Yes)
             {
+                BtnBookmark.IsChecked = false;
+                ScrSelectedTerm.Visibility = Visibility.Collapsed;
+                TblNoSelectTerm.Visibility = Visibility.Visible;
+                MenuButtons.Visibility = Visibility.Hidden;
+
                 CurrentTerm.Term.IsSave = (bool)BtnBookmark.IsChecked!;
                 ConnectDB.ProgTermsContext.SaveChanges();
             }

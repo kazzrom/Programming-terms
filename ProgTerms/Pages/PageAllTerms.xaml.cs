@@ -28,7 +28,7 @@ namespace ProgTerms.Pages
             InitializeComponent();
 
             StkNoneTerms.Visibility = Visibility.Visible;
-            TblNoneTerm.Text = "Загрузка...";
+            TblNoneTerms.Text = "Загрузка...";
 
             ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.ToList();
             ListAllTerm.SelectedIndex = 0;
@@ -45,12 +45,12 @@ namespace ProgTerms.Pages
             var historyContext = ConnectDB.ProgTermsContext.Terms.ToList();
 
             BtnNoneTerms.Visibility= Visibility.Collapsed;
-            TblNoneTerm.Text = "Загрузка...";
+            TblNoneTerms.Text = "Загрузка...";
 
             if(historyContext.Count == 0)
             {
                 StkNoneTerms.Visibility = Visibility.Visible;
-                TblNoneTerm.Text = "Термины отсутствуют... Добавьте новый!";
+                TblNoneTerms.Text = "Список терминов отсутствует... Добавьте новый термин!";
                 BtnNoneTerms.Visibility = Visibility.Visible;
                 GridAllTerm.Visibility = Visibility.Hidden;
             }
@@ -88,7 +88,13 @@ namespace ProgTerms.Pages
 
         private void ListAllTerm_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SelectTerm();
+            if (ListAllTerm.SelectedIndex != -1)
+            {
+                SelectTerm();
+                ScrSelectedTerm.Visibility = Visibility.Visible;
+                TblNoSelectTerm.Visibility = Visibility.Collapsed;
+                MenuButtons.Visibility = Visibility.Visible;
+            }
         }
 
         private void BtnAddTerm_Click(object sender, RoutedEventArgs e)
@@ -106,15 +112,17 @@ namespace ProgTerms.Pages
 
         private void BtnDeleteTerm_Click(object sender, RoutedEventArgs e)
         {
-            var MBisDelete = MessageBox.Show("Вы действительно хотите удалить этот термин?", "Удаление термина", 
+            var MsgBxIsDelete = MessageBox.Show("Вы действительно хотите удалить этот термин?", "Удаление термина", 
                                                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-            if (MBisDelete == MessageBoxResult.Yes)
+            if (MsgBxIsDelete == MessageBoxResult.Yes)
             {
+                ScrSelectedTerm.Visibility = Visibility.Collapsed;
+                TblNoSelectTerm.Visibility = Visibility.Visible;
+                MenuButtons.Visibility = Visibility.Hidden;
+
                 ConnectDB.ProgTermsContext.Terms.Remove(CurrentTerm.Term);
                 ConnectDB.ProgTermsContext.SaveChanges();
-                ListAllTerm.SelectedIndex = 1;
-                SelectTerm();
             }
         }
 
