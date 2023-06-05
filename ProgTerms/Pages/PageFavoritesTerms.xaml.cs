@@ -27,7 +27,10 @@ namespace ProgTerms.Pages
         {
             InitializeComponent();
 
-            NoneTerm();
+            GridFavoritesTerm.Visibility = Visibility.Hidden;
+            TBNoneTerms.Visibility = Visibility.Visible;
+            TBNoneTerms.Text = "Загрузка...";
+
             ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.Where(term => term.IsSave).ToList();
             ListAllTerm.SelectedIndex = 0;
             SelectTerm();
@@ -40,14 +43,25 @@ namespace ProgTerms.Pages
 
         private void UpdateData(object? sender, EventArgs e)
         {
+            TBNoneTerms.Text = "Загрузка...";
             var historyContext = ConnectDB.ProgTermsContext.Terms.Where(term => term.IsSave).ToList();
+
+            if (historyContext.Count == 0)
+            {
+                GridFavoritesTerm.Visibility = Visibility.Hidden;
+                TBNoneTerms.Visibility = Visibility.Visible;
+                TBNoneTerms.Text = "Нет избранного";
+            }
+            else
+            {
+                GridFavoritesTerm.Visibility = Visibility.Visible;
+                TBNoneTerms.Visibility = Visibility.Collapsed;
+            }
+
             if (string.IsNullOrEmpty(WTBSearch.Text))
                 ListAllTerm.ItemsSource = historyContext;
             else
                 ListAllTerm.ItemsSource = historyContext.Where(term => term.Title.StartsWith(WTBSearch.Text)).ToList();
-
-            if (historyContext.Count == 0)
-                NoneTerm();
         }
 
         private void SelectTerm()
@@ -70,14 +84,6 @@ namespace ProgTerms.Pages
             }
         }
 
-        private void NoneTerm()
-        {
-            TblTitle.Text = "Нет терминов";
-            TblDefinion.Text = "Отсутствует";
-            StkAddInfo.Visibility = Visibility.Collapsed;
-            BtnBookmark.IsChecked = false;
-        }
-
         private void ListAllTerm_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectTerm();
@@ -85,7 +91,7 @@ namespace ProgTerms.Pages
 
         private void BtnEditTerm_Click(object sender, RoutedEventArgs e)
         {
-            MainObjects.Frame.Navigate(new PageEditTerm(true));
+            MainObjects.FrameMain.Navigate(new PageEditTerm(true));
             MainObjects.BtnBack.Visibility = Visibility.Collapsed;
         }
 

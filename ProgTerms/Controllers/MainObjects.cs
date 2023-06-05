@@ -10,7 +10,7 @@ namespace ProgTerms.Controllers
 {
     public static class MainObjects
     {
-        public static Frame Frame { get; set; }
+        public static Frame FrameMain { get; set; }
         public static bool IsMain { get; set; }
         public static Button BtnBack { get; set; }
         public static Image HeaderImage { get; set; }

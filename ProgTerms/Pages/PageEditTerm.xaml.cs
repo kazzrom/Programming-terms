@@ -56,12 +56,12 @@ namespace ProgTerms.Pages
 
                     if(IsFavorite)
                     {
-                        MainObjects.Frame.Navigate(new PageFavoritesTerms());
+                        MainObjects.FrameMain.Navigate(new PageFavoritesTerms());
                         MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Bookmark.ico", "Избранное");
                     }
                     else
                     {
-                        MainObjects.Frame.Navigate(new PageAllTerms());
+                        MainObjects.FrameMain.Navigate(new PageAllTerms());
                         MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Open Book.ico", "Все термины");
                     }
                 }
@@ -69,12 +69,12 @@ namespace ProgTerms.Pages
                 {
                     if (IsFavorite)
                     {
-                        MainObjects.Frame.Navigate(new PageFavoritesTerms());
+                        MainObjects.FrameMain.Navigate(new PageFavoritesTerms());
                         MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Bookmark.ico", "Избранное");
                     }
                     else
                     {
-                        MainObjects.Frame.Navigate(new PageAllTerms());
+                        MainObjects.FrameMain.Navigate(new PageAllTerms());
                         MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Open Book.ico", "Все термины");
                     }
                 }

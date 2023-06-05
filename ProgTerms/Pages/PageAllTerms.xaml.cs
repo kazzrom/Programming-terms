@@ -26,6 +26,10 @@ namespace ProgTerms.Pages
         public PageAllTerms()
         {
             InitializeComponent();
+
+            StkNoneTerms.Visibility = Visibility.Visible;
+            TblNoneTerm.Text = "Загрузка...";
+
             ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.ToList();
             ListAllTerm.SelectedIndex = 0;
             SelectTerm();
@@ -38,10 +42,28 @@ namespace ProgTerms.Pages
 
         private void UpdateData(object? sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(WTBSearch.Text))
-                ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.ToList();
+            var historyContext = ConnectDB.ProgTermsContext.Terms.ToList();
+
+            BtnNoneTerms.Visibility= Visibility.Collapsed;
+            TblNoneTerm.Text = "Загрузка...";
+
+            if(historyContext.Count == 0)
+            {
+                StkNoneTerms.Visibility = Visibility.Visible;
+                TblNoneTerm.Text = "Термины отсутствуют... Добавьте новый!";
+                BtnNoneTerms.Visibility = Visibility.Visible;
+                GridAllTerm.Visibility = Visibility.Hidden;
+            }
             else
-                ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.Where(term => term.Title.StartsWith(WTBSearch.Text)).ToList();
+            {
+                GridAllTerm.Visibility = Visibility.Visible;
+                StkNoneTerms.Visibility = Visibility.Collapsed;
+            }
+
+            if (string.IsNullOrEmpty(WTBSearch.Text))
+                ListAllTerm.ItemsSource = historyContext;
+            else
+                ListAllTerm.ItemsSource = historyContext.Where(term => term.Title.StartsWith(WTBSearch.Text)).ToList();
         }
 
         private void SelectTerm()
@@ -71,14 +93,14 @@ namespace ProgTerms.Pages
 
         private void BtnAddTerm_Click(object sender, RoutedEventArgs e)
         {
-            MainObjects.Frame.Navigate(new PageAddTerm());
+            MainObjects.FrameMain.Navigate(new PageAddTerm());
             MainObjects.IsMain = false;
 
         }
 
         private void BtnEditTerm_Click(object sender, RoutedEventArgs e)
         {
-            MainObjects.Frame.Navigate(new PageEditTerm(false));
+            MainObjects.FrameMain.Navigate(new PageEditTerm(false));
             MainObjects.BtnBack.Visibility = Visibility.Collapsed;
         }
 

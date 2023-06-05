@@ -15,7 +15,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel 
+            Orientation="Horizontal" 
+            HorizontalAlignment="Center"  
+            VerticalAlignment="Center"
+            >
             <Image 
                 x:Name="HeaderImage"
                 Width="30" 
@@ -37,10 +41,15 @@
             Width="25"
             HorizontalAlignment="Left"
             Margin="30 0 0 0"
-            Visibility="Collapsed">
-            <Image Source="Icons/Back.ico"/>
+            Visibility="Collapsed"
+            >
+            <Image 
+                Source="Icons/Back.ico"/>
         </Button>
 
-        <Frame x:Name="FrameMain" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Frame 
+            x:Name="FrameMain" 
+            Grid.Row="1" 
+            NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

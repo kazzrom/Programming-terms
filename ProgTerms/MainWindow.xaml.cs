@@ -26,8 +26,8 @@ namespace ProgTerms
         public MainWindow()
         {
             InitializeComponent();
-            MainObjects.Frame = FrameMain;
-            MainObjects.Frame.Navigate(new PageMain());
+            MainObjects.FrameMain = FrameMain;
+            MainObjects.FrameMain.Navigate(new PageMain());
             MainObjects.BtnBack = BtnBack;
             MainObjects.HeaderTextBlock = HeaderTextBlock;
             MainObjects.HeaderImage = HeaderImage;
@@ -37,13 +37,13 @@ namespace ProgTerms
         {
             if (MainObjects.IsMain)
             {
-                MainObjects.Frame.Navigate(new PageMain());
+                MainObjects.FrameMain.Navigate(new PageMain());
                 BtnBack.Visibility = Visibility.Collapsed;
                 MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Source Code.ico", "Главная");
             }
             else
             {
-                MainObjects.Frame.Navigate(new PageAllTerms());
+                MainObjects.FrameMain.Navigate(new PageAllTerms());
                 MainObjects.IsMain = true;
                 MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Open Book.ico", "Все термины");
             }

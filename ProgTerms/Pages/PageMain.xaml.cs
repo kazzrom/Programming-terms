@@ -28,7 +28,7 @@ namespace ProgTerms.Pages
 
         private void BtnTerms_Click(object sender, RoutedEventArgs e)
         {
-            MainObjects.Frame.Navigate(new PageAllTerms());
+            MainObjects.FrameMain.Navigate(new PageAllTerms());
             MainObjects.IsMain = true;
             MainObjects.BtnBack.Visibility = Visibility.Visible;
             MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Open Book.ico", "Все термины");
@@ -36,7 +36,7 @@ namespace ProgTerms.Pages
 
         private void BtnFavoritesTerms_Click(object sender, RoutedEventArgs e)
         {
-            MainObjects.Frame.Navigate(new PageFavoritesTerms());
+            MainObjects.FrameMain.Navigate(new PageFavoritesTerms());
             MainObjects.IsMain = true;
             MainObjects.BtnBack.Visibility = Visibility.Visible;
             MainObjects.ChangeHeaderObjects("pack://application:,,,/Icons/Bookmark.ico", "Избранное");

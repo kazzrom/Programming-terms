@@ -10,16 +10,17 @@
       Title="PageTerm">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid x:Name="GridAllTerm" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <xctk:WatermarkTextBox
+            <xctk:WatermarkTextBox
             x:Name="WTBSearch"
             Grid.Row="0"
             Grid.Column="0"
@@ -28,45 +29,45 @@
             Margin="5 0"
             VerticalAlignment="Center"/>
 
-        <Border Background="#E5E5E5"
+            <Border Background="#E5E5E5"
                 CornerRadius="8"
                 Grid.Row="0" 
                 Grid.Column="1"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Padding="20 10">
-            <StackPanel Orientation="Horizontal" >
-                <Button Style="{StaticResource BtnNone}"
+                <StackPanel Orientation="Horizontal" >
+                    <Button Style="{StaticResource BtnNone}"
                         Width="26"
                         Margin="0 0 30 0"
                         x:Name="BtnAddTerm"
                         Click="BtnAddTerm_Click">
-                    <Image Source="../Icons/Add.ico"/>
-                </Button>
-                <Button Style="{StaticResource BtnNone}"
+                        <Image Source="../Icons/Add.ico"/>
+                    </Button>
+                    <Button Style="{StaticResource BtnNone}"
                         Width="26"
                         Margin="0 0 30 0"
                         x:Name="BtnEditTerm"
                         Click="BtnEditTerm_Click">
-                    <Image Source="../Icons/Edit.ico"/>
-                </Button>
-                <Button Style="{StaticResource BtnNone}"
+                        <Image Source="../Icons/Edit.ico"/>
+                    </Button>
+                    <Button Style="{StaticResource BtnNone}"
                         Width="26"
                         Margin="0 0 30 0"
                         x:Name="BtnDeleteTerm"
                         Click="BtnDeleteTerm_Click">
-                    <Image Source="../Icons/Delete.ico"/>
-                </Button>
-                <ToggleButton 
-                    Style="{StaticResource BtnBookmark}" 
-                    Width="26"
-                    x:Name="BtnBookmark"
-                    Click="BtnBookmark_Click"
-                    BorderThickness="0"/>
-            </StackPanel>
-        </Border>
+                        <Image Source="../Icons/Delete.ico"/>
+                    </Button>
+                    <ToggleButton 
+                        Style="{StaticResource BtnBookmark}" 
+                        Width="26"
+                        x:Name="BtnBookmark"
+                        Click="BtnBookmark_Click"
+                        BorderThickness="0"/>
+                </StackPanel>
+            </Border>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="0" HorizontalScrollBarVisibility="Hidden">
+            <ScrollViewer Grid.Row="1" Grid.Column="0" HorizontalScrollBarVisibility="Hidden">
                 <StackPanel Orientation="Vertical">
                     <ListBox x:Name="ListAllTerm" SelectionChanged="ListAllTerm_SelectionChanged">
                         <ListBox.ItemTemplate>
@@ -81,35 +82,65 @@
                 </StackPanel>
             </ScrollViewer>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <StackPanel Orientation="Vertical">
-                <TextBlock
+            <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
                     x:Name="TblTitle"
                     Text="Title -"
                     Margin="30 30 30 0"
                     FontSize="36"
                     FontWeight="Bold"/>
 
-                <TextBlock
+                    <TextBlock
                     x:Name="TblDefinion"
                     Text="Definion"
                     Margin="30 30 30 0"
                     FontSize="24"
                     TextWrapping="Wrap"/>
 
-                <StackPanel x:Name="StkAddInfo" Orientation="Vertical" Margin="30 40 30 0">
-                    <TextBlock
+                    <StackPanel x:Name="StkAddInfo" Orientation="Vertical" Margin="30 40 30 0">
+                        <TextBlock
                         Text="Дополнительная информация"
                         FontSize="18"
                         FontStyle="Italic"/>
-                    <TextBlock
+                        <TextBlock
                         x:Name="TblAddInfo"
                         Text="Дополнительная информация"
                         TextWrapping="Wrap"
                         Margin="0 10 40 30"
                         FontSize="18"/>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </ScrollViewer>
+            </ScrollViewer>
+        </Grid>
+
+        <StackPanel
+            x:Name="StkNoneTerms"
+            Orientation="Vertical"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            <TextBlock
+                x:Name="TblNoneTerm"
+                Text=""
+                Foreground="Gray"
+                Margin="0 0 0 10"
+                FontSize="16"/>
+            <Button 
+                x:Name="BtnNoneTerms"
+                Style="{StaticResource BtnNone}"
+                Click="BtnAddTerm_Click"
+                Visibility="Collapsed">
+                <StackPanel 
+                    Orientation="Horizontal">
+                    <Image 
+                        Source="../Icons/Add.ico"
+                        Margin="0 0 5 0"/>
+                    <TextBlock 
+                        Text="Добавить" 
+                        VerticalAlignment="Center"
+                        FontSize="16"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </Page>
