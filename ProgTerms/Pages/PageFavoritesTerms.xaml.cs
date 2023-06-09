@@ -31,7 +31,7 @@ namespace ProgTerms.Pages
             TBNoneTerms.Visibility = Visibility.Visible;
             TBNoneTerms.Text = "Загрузка...";
 
-            ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.Where(term => term.IsSave).ToList();
+            ListAllTerm.ItemsSource = ConnectDB.ProgTermsContext.Terms.Where(term => term.IsSave == 1).ToList();
             ListAllTerm.SelectedIndex = 0;
             SelectTerm();
 
@@ -44,7 +44,7 @@ namespace ProgTerms.Pages
         private void UpdateData(object? sender, EventArgs e)
         {
             TBNoneTerms.Text = "Загрузка...";
-            var historyContext = ConnectDB.ProgTermsContext.Terms.Where(term => term.IsSave).ToList();
+            var historyContext = ConnectDB.ProgTermsContext.Terms.Where(term => term.IsSave == 1).ToList();
 
             if (historyContext.Count == 0)
             {
@@ -72,7 +72,7 @@ namespace ProgTerms.Pages
                 CurrentTerm.Term = selectTerm;
                 TblTitle.Text = selectTerm.Title + " -";
                 TblDefinion.Text = selectTerm.Definition;
-                BtnBookmark.IsChecked = selectTerm.IsSave;
+                BtnBookmark.IsChecked = selectTerm.IsSave == 1;
 
                 if (!string.IsNullOrEmpty(selectTerm.AddInformation))
                 {
@@ -130,7 +130,7 @@ namespace ProgTerms.Pages
                 TblNoSelectTerm.Visibility = Visibility.Visible;
                 MenuButtons.Visibility = Visibility.Hidden;
 
-                CurrentTerm.Term.IsSave = (bool)BtnBookmark.IsChecked!;
+                CurrentTerm.Term.IsSave = (bool)BtnBookmark.IsChecked! ? 1 : 0;
                 ConnectDB.ProgTermsContext.SaveChanges();
             }
         }

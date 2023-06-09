@@ -13,7 +13,5 @@ public partial class Term
 
     public string? AddInformation { get; set; }
 
-    public string? Image { get; set; }
-
-    public bool IsSave { get; set; }
+    public int IsSave { get; set; }
 }

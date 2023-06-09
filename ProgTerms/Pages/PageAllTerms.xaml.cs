@@ -74,7 +74,7 @@ namespace ProgTerms.Pages
                 CurrentTerm.Term = selectTerm;
                 TblTitle.Text = selectTerm.Title + " -";
                 TblDefinion.Text = selectTerm.Definition;
-                BtnBookmark.IsChecked = selectTerm.IsSave;
+                BtnBookmark.IsChecked = selectTerm.IsSave == 1;
 
                 if (!string.IsNullOrEmpty(selectTerm.AddInformation))
                 {
@@ -128,7 +128,7 @@ namespace ProgTerms.Pages
 
         private void BtnBookmark_Click(object sender, RoutedEventArgs e)
         {
-            CurrentTerm.Term.IsSave = (bool)BtnBookmark.IsChecked!;
+            CurrentTerm.Term.IsSave = (bool)BtnBookmark.IsChecked! ? 1 : 0;
             ConnectDB.ProgTermsContext.SaveChanges();
         }
     }

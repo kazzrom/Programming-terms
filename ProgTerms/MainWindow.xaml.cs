@@ -26,6 +26,7 @@ namespace ProgTerms
         public MainWindow()
         {
             InitializeComponent();
+            ConnectDB.Connect();
             MainObjects.FrameMain = FrameMain;
             MainObjects.FrameMain.Navigate(new PageMain());
             MainObjects.BtnBack = BtnBack;

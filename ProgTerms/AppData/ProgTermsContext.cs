@@ -18,14 +18,14 @@ public partial class ProgTermsContext : DbContext
     public virtual DbSet<Term> Terms { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=ProgTerms;Integrated Security=True");
+        => optionsBuilder.UseSqlite("Data Source=ProgTerms.db");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Term>(entity =>
         {
-            entity.Property(e => e.Image).HasMaxLength(50);
-            entity.Property(e => e.Title).HasMaxLength(50);
+            entity.HasIndex(e => e.Id, "IX_Terms_Id").IsUnique();
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
         });
 
         OnModelCreatingPartial(modelBuilder);
